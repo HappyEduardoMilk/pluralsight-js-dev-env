@@ -5,9 +5,12 @@ import webpack from 'webpack';
 
 import config from '../webpack.config.dev';
 
-const port = 3333,
-      app = express(),
-      compiler = webpack(config);
+
+/* eslint-disable no-console */
+
+const port = 3333;
+const app = express();
+const compiler = webpack(config);
 
 // Express uses `webpack-dev-middleware` with our `compiler`
 app.use(require('webpack-dev-middleware')(compiler, {
@@ -23,6 +26,6 @@ app.listen(port, (err) => {
   if (err) {
     console.log(err);
   } else {
-    open('http://localhost:' + port);
+    open(`http://localhost:${port}`);
   }
 });
